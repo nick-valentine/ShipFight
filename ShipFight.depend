@@ -1,0 +1,73 @@
+# depslib dependency file v1.0
+1471413767 source:c:\users\nick\documents\projects\shipfight\src\main.cpp
+	<iostream>
+	<string>
+	"../inc/Parameters.hpp"
+	"../inc/lib/VecFunc.hpp"
+	"../inc/lib/StrFunc.hpp"
+	"../inc/Assembler/AbstractAssembler.hpp"
+	"../inc/Assembler/AssemblerFromFile.hpp"
+	"../inc/Json/JsonParser.hpp"
+	"../inc/Json/JsonObject.hpp"
+
+1471408548 c:\users\nick\documents\projects\shipfight\inc\parameters.hpp
+
+1471406666 c:\users\nick\documents\projects\shipfight\inc\abstractassembler.hpp
+	<vector>
+	<map>
+	<string>
+	"Parameters.hpp"
+
+1471406363 source:c:\users\nick\documents\projects\shipfight\src\abstractassembler.cpp
+	"../inc/AbstractAssembler.hpp"
+
+1471408102 source:c:\users\nick\documents\projects\shipfight\src\assembler\abstractassembler.cpp
+	"../../inc/Assembler/AbstractAssembler.hpp"
+
+1471408443 c:\users\nick\documents\projects\shipfight\inc\assembler\abstractassembler.hpp
+	<vector>
+	<map>
+	<string>
+	"../Parameters.hpp"
+
+1471408381 source:c:\users\nick\documents\projects\shipfight\src\assembler\assemblerfromfile.cpp
+	"../../inc/Assembler/AssemblerFromFile.hpp"
+
+1471411886 c:\users\nick\documents\projects\shipfight\inc\assembler\assemblerfromfile.hpp
+	"AbstractAssembler.hpp"
+	<fstream>
+	<string>
+
+1471412146 source:c:\users\nick\documents\projects\shipfight\src\json\jsonparser.cpp
+	"../../inc/Json/JsonParser.hpp"
+
+1471412121 c:\users\nick\documents\projects\shipfight\inc\json\jsonparser.hpp
+	<string>
+	<vector>
+	"../lib/StrFunc.hpp"
+	"JsonObject.hpp"
+
+1471410905 source:c:\users\nick\documents\projects\shipfight\src\json\jsonobject.cpp
+	"../../inc/Json/JsonObject.hpp"
+
+1471410886 c:\users\nick\documents\projects\shipfight\inc\json\jsonobject.hpp
+	<vector>
+	<utility>
+	<string>
+	"../Parameters.hpp"
+
+1471413970 c:\users\nick\documents\projects\shipfight\inc\lib\strfunc.hpp
+	<string>
+	<vector>
+	"VecFunc.hpp"
+
+1471413743 source:c:\users\nick\documents\projects\shipfight\src\lib\strfunc.cpp
+	"../../inc/lib/StrFunc.hpp"
+
+1471412755 source:c:\users\nick\documents\projects\shipfight\src\lib\vecfunc.cpp
+	"../../inc/lib/VecFunc.hpp"
+
+1471413002 c:\users\nick\documents\projects\shipfight\inc\lib\vecfunc.hpp
+	<vector>
+	"../Parameters.hpp"
+
