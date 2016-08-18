@@ -16,10 +16,12 @@ JsonObject::JsonObject()
 
 JsonObject::~JsonObject()
 {
-
+  for (size_t i = 0; i < this->objects.size(); i++) {
+    delete this->objects[i].value;
+  }
 }
 
-int JsonObject::length()
+uint JsonObject::length()
 {
   return this->objects.size() + this->properties.size();
 }

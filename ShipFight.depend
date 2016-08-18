@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1471492101 source:c:\users\nick\documents\projects\shipfight\src\main.cpp
+1471500547 source:c:\users\nick\documents\projects\shipfight\src\main.cpp
 	<iostream>
 	<string>
 	"Parameters.hpp"
@@ -38,7 +38,7 @@
 	<fstream>
 	<string>
 
-1471492112 source:c:\users\nick\documents\projects\shipfight\src\json\jsonparser.cpp
+1471501646 source:c:\users\nick\documents\projects\shipfight\src\json\jsonparser.cpp
 	"Json/JsonParser.hpp"
 
 1471412121 c:\users\nick\documents\projects\shipfight\inc\json\jsonparser.hpp
@@ -47,7 +47,7 @@
 	"../lib/StrFunc.hpp"
 	"JsonObject.hpp"
 
-1471495472 source:c:\users\nick\documents\projects\shipfight\src\json\jsonobject.cpp
+1471501415 source:c:\users\nick\documents\projects\shipfight\src\json\jsonobject.cpp
 	"Json/JsonObject.hpp"
 
 1471491819 c:\users\nick\documents\projects\shipfight\inc\json\jsonobject.hpp
@@ -61,8 +61,8 @@
 	<vector>
 	"VecFunc.hpp"
 
-1471413976 source:c:\users\nick\documents\projects\shipfight\src\lib\strfunc.cpp
-	"../../inc/lib/StrFunc.hpp"
+1471498791 source:c:\users\nick\documents\projects\shipfight\src\lib\strfunc.cpp
+	"lib/StrFunc.hpp"
 
 1471412755 source:c:\users\nick\documents\projects\shipfight\src\lib\vecfunc.cpp
 	"../../inc/lib/VecFunc.hpp"

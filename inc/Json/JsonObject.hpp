@@ -18,6 +18,9 @@ public:
     property() : label(""), value("")
     {
     }
+    property(std::string l, std::string v) : label(l), value(v)
+    {
+    }
   };
 
   struct childJson
@@ -28,6 +31,9 @@ public:
     childJson() : label(""), value(0)
     {
     }
+    childJson(std::string l, JsonObject *v) : label(l), value(v)
+    {
+    }
   };
 
   property  invalid_property;
@@ -36,7 +42,7 @@ public:
   JsonObject();
   ~JsonObject();
 
-  int length();
+  uint length();
   std::string get_key(uint i);
   bool is_direct_child(uint i);
   bool is_json(uint i);

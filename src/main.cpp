@@ -11,9 +11,9 @@
 
 int main()
 {
-  std::string a = "hello, how. are, you";
+  std::string a = "hello, \"how, are\". you";
 
-  std::vector<std::string> b = string::explode(a," .,");
+  std::vector<std::string> b = string::explode(a," ,.", false);
 
   for(uint i = 0; i < b.size(); ++i) {
     std::cout<<b[i]<<"\n";
@@ -22,7 +22,10 @@ int main()
 
   std::cout<<string::implode(b,'|')<<std::endl;
 
-  std::cout<<vector::in(b,std::string(" how"))<<std::endl;
+  std::cout<<vector::in(b,std::string("hello"))<<std::endl;
+
+  JsonParser jparse;
+  JsonObject *json = jparse.parse("{a:hello,b:{c:\"goodbye:{apples:cheese} there\",d:{e:apples},l:{a:v}}}");
 
   return 0;
 }
