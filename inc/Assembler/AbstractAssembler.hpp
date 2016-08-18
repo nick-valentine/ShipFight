@@ -5,7 +5,7 @@
 #include <map>
 #include <string>
 
-#include "../Parameters.hpp"
+#include "Parameters.hpp"
 
 class AbstractAssembler
 {

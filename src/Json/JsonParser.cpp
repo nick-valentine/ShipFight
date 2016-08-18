@@ -1,4 +1,4 @@
-#include "../../inc/Json/JsonParser.hpp"
+#include "Json/JsonParser.hpp"
 
 JsonParser::JsonParser()
 {
@@ -8,5 +8,5 @@ JsonParser::JsonParser()
 
 JsonObject JsonParser::parse(std::string json)
 {
-  
+  return JsonObject();
 }

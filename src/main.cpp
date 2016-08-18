@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
 
-#include "../inc/Parameters.hpp"
-#include "../inc/lib/VecFunc.hpp"
-#include "../inc/lib/StrFunc.hpp"
-#include "../inc/Assembler/AbstractAssembler.hpp"
-#include "../inc/Assembler/AssemblerFromFile.hpp"
-#include "../inc/Json/JsonParser.hpp"
-#include "../inc/Json/JsonObject.hpp"
+#include "Parameters.hpp"
+#include "lib/VecFunc.hpp"
+#include "lib/StrFunc.hpp"
+#include "Assembler/AbstractAssembler.hpp"
+#include "Assembler/AssemblerFromFile.hpp"
+#include "Json/JsonParser.hpp"
+#include "Json/JsonObject.hpp"
 
 int main()
 {

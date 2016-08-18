@@ -1,4 +1,4 @@
-#include "../../inc/Assembler/AssemblerFromFile.hpp"
+#include "Assembler/AssemblerFromFile.hpp"
 
 AssemblerFromFile::AssemblerFromFile(std::string file_name)
 {

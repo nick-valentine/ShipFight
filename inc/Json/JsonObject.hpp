@@ -2,20 +2,37 @@
 #define JSONOBJECT_HPP
 
 #include <vector>
-#include <utility> //std::pair
 #include <string>
 
-#include "../Parameters.hpp"
+#include "Parameters.hpp"
 
 class JsonObject
 {
 public:
-  typedef std::pair<std::string,std::string> property;
-  typedef std::pair<std::string,JsonObject> childJson;
-private:
-  std::vector<childJson> objects;
-  std::vector<property> properties;
-public:
+
+  struct property
+  {
+    std::string label;
+    std::string value;
+
+    property() : label(""), value("")
+    {
+    }
+  };
+
+  struct childJson
+  {
+    std::string label;
+    JsonObject *value;
+
+    childJson() : label(""), value(0)
+    {
+    }
+  };
+
+  property  invalid_property;
+  childJson invalid_childJson;
+
   JsonObject();
   ~JsonObject();
 
@@ -29,6 +46,10 @@ public:
 
   void add_property(property p);
   void add_json(childJson j);
+
+private:
+  std::vector<childJson> objects;
+  std::vector<property> properties;
 };
 
 #endif //JSONOBJECT_HPP

@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "../lib/StrFunc.hpp"
-#include "JsonObject.hpp"
+#include "lib/StrFunc.hpp"
+#include "Json/JsonObject.hpp"
 
 class JsonParser
 {

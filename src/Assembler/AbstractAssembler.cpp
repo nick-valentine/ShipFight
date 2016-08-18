@@ -1,4 +1,4 @@
-#include "../../inc/Assembler/AbstractAssembler.hpp"
+#include "Assembler/AbstractAssembler.hpp"
 
 AbstractAssembler::AbstractAssembler()
 {

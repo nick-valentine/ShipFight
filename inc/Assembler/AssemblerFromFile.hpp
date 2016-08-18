@@ -1,7 +1,7 @@
 #ifndef ASSEMBLERFROMFILE_HPP
 #define ASSEMBLERFROMFILE_HPP
 
-#include "AbstractAssembler.hpp"
+#include "Assembler/AbstractAssembler.hpp"
 
 #include <fstream>
 #include <string>

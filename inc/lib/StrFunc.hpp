@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "VecFunc.hpp"
+#include "lib/VecFunc.hpp"
 
 namespace string
 {

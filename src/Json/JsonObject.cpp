@@ -1,9 +1,17 @@
-#include "../../inc/Json/JsonObject.hpp"
+#include "Json/JsonObject.hpp"
 
 JsonObject::JsonObject()
 {
   this->objects = std::vector<childJson>();
   this->properties = std::vector<property>();
+
+  this->invalid_property = property();
+  this->invalid_property.label = "";
+  this->invalid_property.value = "";
+
+  this->invalid_childJson = childJson();
+  this->invalid_childJson.label = "";
+  this->invalid_childJson.value = 0;
 }
 
 JsonObject::~JsonObject()
@@ -20,10 +28,10 @@ std::string JsonObject::get_key(uint i)
 {
   if( i > 0 ) {
     if( i < this->objects.size() ) {
-      return this->objects[i].first;
+      return this->objects[i].label;
     } else if( i < this->objects.size() + this->properties.size() ) {
       i -= this->objects.size();
-      return this->properties[i].first;
+      return this->properties[i].label;
     }
   }
   return "Invalid key provided";
@@ -53,6 +61,8 @@ JsonObject::property &JsonObject::get_direct_child(uint i)
 {
   if( this->is_direct_child(i) ) {
     return this->properties[i];
+  } else {
+    return invalid_property;
   }
 }
 
@@ -60,6 +70,8 @@ JsonObject::childJson &JsonObject::get_json(uint i)
 {
   if( this->is_json(i) ) {
     return this->objects[i];
+  } else {
+    return invalid_childJson;
   }
 }
 
