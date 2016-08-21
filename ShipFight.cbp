@@ -32,17 +32,15 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="inc/Assembler/AbstractAssembler.hpp" />
-		<Unit filename="inc/Assembler/AssemblerFromFile.hpp" />
-		<Unit filename="inc/Json/JsonObject.hpp" />
-		<Unit filename="inc/Json/JsonParser.hpp" />
+		<Unit filename="inc/Assembler/SmallAssembler.hpp" />
+		<Unit filename="inc/Helper.hpp" />
 		<Unit filename="inc/Parameters.hpp" />
 		<Unit filename="inc/lib/Pair.hpp" />
 		<Unit filename="inc/lib/StrFunc.hpp" />
 		<Unit filename="inc/lib/VecFunc.hpp" />
 		<Unit filename="src/Assembler/AbstractAssembler.cpp" />
-		<Unit filename="src/Assembler/AssemblerFromFile.cpp" />
-		<Unit filename="src/Json/JsonObject.cpp" />
-		<Unit filename="src/Json/JsonParser.cpp" />
+		<Unit filename="src/Assembler/SmallAssembler.cpp" />
+		<Unit filename="src/Helper.cpp" />
 		<Unit filename="src/lib/StrFunc.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>

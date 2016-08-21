@@ -7,6 +7,7 @@
 #include <stdlib.h>
 
 #include "Parameters.hpp"
+#include "Helper.hpp"
 #include "Assembler/AbstractAssembler.hpp"
 
 class SmallAssembler : public AbstractAssembler
@@ -80,7 +81,7 @@ private:
   };
 
   union operation {
-    int i;
+    unsigned int i;
     Register r;
     Address a;
     Constant c;

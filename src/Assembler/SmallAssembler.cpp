@@ -70,7 +70,7 @@ int SmallAssembler::translate_statement(std::string line)
           return -1;
           break;
     };
-    return return_val;
+    return int16mask(return_val);
   } else {
     std::cout<<"STRINSTREAM FAILED"<<std::endl;
     return -1;
@@ -82,6 +82,7 @@ int SmallAssembler::translate_register(TranslationInformation op)
   int rd, rs;
   this->ss>>rd>>rs;
   operation x;
+  x.i = 0;
   x.r.OP = op.opcode;
   x.r.RD = rd;
   x.r.I = op.immediate;
@@ -95,6 +96,7 @@ int SmallAssembler::translate_address(TranslationInformation op)
   int rd, address;
   this->ss>>rd>>address;
   operation x;
+  x.i = 0;
   x.a.OP = op.opcode;
   x.a.RD = rd;
   x.a.I = op.immediate;
@@ -108,6 +110,7 @@ int SmallAssembler::translate_constant(TranslationInformation op)
   int rd, constant;
   this->ss>>rd>>constant;
   operation x;
+  x.i = 0;
   x.c.OP = op.opcode;
   x.c.RD = rd;
   x.c.I = op.immediate;
@@ -121,6 +124,7 @@ int SmallAssembler::translate_unary(TranslationInformation op)
   int rd;
   this->ss>>rd;
   operation x;
+  x.i = 0;
   x.u.OP = op.opcode;
   x.u.RD = rd;
 
@@ -130,6 +134,7 @@ int SmallAssembler::translate_unary(TranslationInformation op)
 int SmallAssembler::translate_none(TranslationInformation op)
 {
   operation x;
+  x.i = 0;
   x.n.OP = op.opcode;
 
   return x.i;

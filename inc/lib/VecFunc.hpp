@@ -3,6 +3,7 @@
 
 #include <vector>
 
+#include "Helper.hpp"
 #include "Parameters.hpp"
 
 namespace vector

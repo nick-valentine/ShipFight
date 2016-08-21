@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1471752916 source:c:\users\nick\documents\projects\shipfight\src\main.cpp
+1471753637 source:c:\users\nick\documents\projects\shipfight\src\main.cpp
 	<iostream>
 	<string>
 	<vector>
@@ -70,6 +70,9 @@
 	<vector>
 	"../Parameters.hpp"
 
-1471752680 source:c:\users\nick\documents\projects\shipfight\src\assembler\smallassembler.cpp
+1471754988 source:c:\users\nick\documents\projects\shipfight\src\assembler\smallassembler.cpp
 	"Assembler/SmallAssembler.hpp"
+
+1471755229 source:c:\users\nick\documents\projects\shipfight\src\helper.cpp
+	"Helper.hpp"
 

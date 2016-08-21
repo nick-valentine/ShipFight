@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "Parameters.hpp"
+#include "Helper.hpp"
 #include "lib/VecFunc.hpp"
 #include "lib/StrFunc.hpp"
 #include "Assembler/AbstractAssembler.hpp"
@@ -10,7 +11,7 @@
 
 void print_binary(int x)
 {
-  for(int i = 32; i >= 0; --i){
+  for(int i = 31; i >= 0; --i){
     std::cout<<((x & (1<<i))?1:0);
     if(i == 11 || i == 16) {
       std::cout<<" ";
@@ -33,7 +34,7 @@ int main()
 
   for (size_t i = 0; i < o_file.size(); i++) {
     print_binary(o_file[i]);
-    std::cout<<std::endl;
+    std::cout<<" "<<o_file[i]<<std::endl;
   }
 
   return 0;
