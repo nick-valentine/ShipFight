@@ -1,14 +1,13 @@
 # depslib dependency file v1.0
-1471500547 source:c:\users\nick\documents\projects\shipfight\src\main.cpp
+1471752916 source:c:\users\nick\documents\projects\shipfight\src\main.cpp
 	<iostream>
 	<string>
+	<vector>
 	"Parameters.hpp"
 	"lib/VecFunc.hpp"
 	"lib/StrFunc.hpp"
 	"Assembler/AbstractAssembler.hpp"
-	"Assembler/AssemblerFromFile.hpp"
-	"Json/JsonParser.hpp"
-	"Json/JsonObject.hpp"
+	"Assembler/SmallAssembler.hpp"
 
 1471408548 c:\users\nick\documents\projects\shipfight\inc\parameters.hpp
 
@@ -21,7 +20,7 @@
 1471406363 source:c:\users\nick\documents\projects\shipfight\src\abstractassembler.cpp
 	"../inc/AbstractAssembler.hpp"
 
-1471492028 source:c:\users\nick\documents\projects\shipfight\src\assembler\abstractassembler.cpp
+1471752204 source:c:\users\nick\documents\projects\shipfight\src\assembler\abstractassembler.cpp
 	"Assembler/AbstractAssembler.hpp"
 
 1471408443 c:\users\nick\documents\projects\shipfight\inc\assembler\abstractassembler.hpp
@@ -38,7 +37,7 @@
 	<fstream>
 	<string>
 
-1471501646 source:c:\users\nick\documents\projects\shipfight\src\json\jsonparser.cpp
+1471740571 source:c:\users\nick\documents\projects\shipfight\src\json\jsonparser.cpp
 	"Json/JsonParser.hpp"
 
 1471412121 c:\users\nick\documents\projects\shipfight\inc\json\jsonparser.hpp
@@ -47,7 +46,7 @@
 	"../lib/StrFunc.hpp"
 	"JsonObject.hpp"
 
-1471501415 source:c:\users\nick\documents\projects\shipfight\src\json\jsonobject.cpp
+1471740445 source:c:\users\nick\documents\projects\shipfight\src\json\jsonobject.cpp
 	"Json/JsonObject.hpp"
 
 1471491819 c:\users\nick\documents\projects\shipfight\inc\json\jsonobject.hpp
@@ -61,7 +60,7 @@
 	<vector>
 	"VecFunc.hpp"
 
-1471498791 source:c:\users\nick\documents\projects\shipfight\src\lib\strfunc.cpp
+1471737987 source:c:\users\nick\documents\projects\shipfight\src\lib\strfunc.cpp
 	"lib/StrFunc.hpp"
 
 1471412755 source:c:\users\nick\documents\projects\shipfight\src\lib\vecfunc.cpp
@@ -70,4 +69,7 @@
 1471490746 c:\users\nick\documents\projects\shipfight\inc\lib\vecfunc.hpp
 	<vector>
 	"../Parameters.hpp"
+
+1471752680 source:c:\users\nick\documents\projects\shipfight\src\assembler\smallassembler.cpp
+	"Assembler/SmallAssembler.hpp"
 

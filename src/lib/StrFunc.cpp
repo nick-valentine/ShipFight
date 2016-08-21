@@ -31,6 +31,8 @@ namespace string
     int start_cut = 0;
     int last_cut = 0;
 
+    bool delim_at_end = false;
+
     for (size_t i = 0; i < str.size(); ++i) {
 
       if(str[i] == '\"' || str[i] == '\'') {
@@ -42,13 +44,16 @@ namespace string
           start_cut = i;
           while( str[i+1] == delim && i < str.size() ) {
             ++i;
+            delim_at_end = true;
           }
           return_val.push_back(str.substr(last_cut, start_cut - last_cut));
           last_cut = i+1;
         }
       }
     }
-    return_val.push_back(str.substr(last_cut));
+    if(!delim_at_end) {
+      return_val.push_back(str.substr(last_cut));
+    }
 
     return return_val;
   }
@@ -66,6 +71,8 @@ namespace string
 
     int start_cut = 0;
     int last_cut = 0;
+    bool delim_at_end = false;
+
     for(size_t i = 0; i < str.size(); ++i) {
 
       if(str[i] == '\"' || str[i] == '\'') {
@@ -77,13 +84,16 @@ namespace string
           start_cut = i;
           while(vector::in(d,str[i+1]) && i < str.size()) {
             ++i;
+            delim_at_end = true;
           }
           return_val.push_back(str.substr(last_cut,start_cut - last_cut));
           last_cut = i+1;
         }
       }
     }
-    return_val.push_back(str.substr(last_cut));
+    if(!delim_at_end) {
+      return_val.push_back(str.substr(last_cut));
+    }
 
     return return_val;
   }

@@ -1,31 +1,40 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "Parameters.hpp"
 #include "lib/VecFunc.hpp"
 #include "lib/StrFunc.hpp"
 #include "Assembler/AbstractAssembler.hpp"
-#include "Assembler/AssemblerFromFile.hpp"
-#include "Json/JsonParser.hpp"
-#include "Json/JsonObject.hpp"
+#include "Assembler/SmallAssembler.hpp"
+
+void print_binary(int x)
+{
+  for(int i = 32; i >= 0; --i){
+    std::cout<<((x & (1<<i))?1:0);
+    if(i == 11 || i == 16) {
+      std::cout<<" ";
+    }
+  }
+}
 
 int main()
 {
-  std::string a = "hello, \"how, are\". you";
+  SmallAssembler my_asm;
+  std::vector<std::string> p;
+  p.push_back("load 1 69");
+  p.push_back("loadi 1 10");
+  p.push_back("addi 1 5");
+  p.push_back("store 1 4");
+  p.push_back("halt");
+  p.push_back("noop");
 
-  std::vector<std::string> b = string::explode(a," ,.", false);
+  std::vector<int> o_file = my_asm.translate_program(p);
 
-  for(uint i = 0; i < b.size(); ++i) {
-    std::cout<<b[i]<<"\n";
+  for (size_t i = 0; i < o_file.size(); i++) {
+    print_binary(o_file[i]);
+    std::cout<<std::endl;
   }
-  std::cout<<std::endl;
-
-  std::cout<<string::implode(b,'|')<<std::endl;
-
-  std::cout<<vector::in(b,std::string("hello"))<<std::endl;
-
-  JsonParser jparse;
-  JsonObject *json = jparse.parse("{a:hello,b:{c:\"goodbye:{apples:cheese} there\",d:{e:apples},l:{a:v}}}");
 
   return 0;
 }
