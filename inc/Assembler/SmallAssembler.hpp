@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 #include "Parameters.hpp"
-#include "Helper.hpp"
+#include "lib/Helper.hpp"
 #include "Assembler/AbstractAssembler.hpp"
 
 class SmallAssembler : public AbstractAssembler

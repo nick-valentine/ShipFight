@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "Parameters.hpp"
-#include "Helper.hpp"
+#include "lib/Helper.hpp"
 #include "lib/VecFunc.hpp"
 #include "lib/StrFunc.hpp"
 #include "Assembler/AbstractAssembler.hpp"

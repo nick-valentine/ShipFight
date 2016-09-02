@@ -5,7 +5,7 @@
 #include <string>
 
 #include "Parameters.hpp"
-#include "Helper.hpp"
+#include "lib/Helper.hpp"
 
 class AbstractAssembler
 {
