@@ -6,7 +6,7 @@ SmallAssembler::SmallAssembler() : AbstractAssembler()
 
   this->opcode_map["load"] = TranslationInformation(0,ADDRESS,0);
   this->opcode_map["loadi"] = TranslationInformation(0,CONSTANT,1);
-  this->opcode_map["store"] = TranslationInformation(1,ADDRESS,1);
+  this->opcode_map["store"] = TranslationInformation(1,ADDRESS,0);
   this->opcode_map["add"] = TranslationInformation(2,REGISTER,0);
   this->opcode_map["addi"] = TranslationInformation(2,CONSTANT,1);
   this->opcode_map["addc"] = TranslationInformation(3,REGISTER,0);

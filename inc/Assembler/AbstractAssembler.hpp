@@ -16,7 +16,7 @@ public:
   //this function must self iterate
   virtual int translate_statement(std::string line) = 0;
 
-  std::vector<int> translate_program(std::vector<std::string> assembly_program);
+  std::vector<unsigned int> translate_program(std::vector<std::string> assembly_program);
 };
 
 #endif //ABSTRACTASSEMBLER_HPP

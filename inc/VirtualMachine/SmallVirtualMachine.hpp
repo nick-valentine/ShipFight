@@ -3,6 +3,9 @@
 
 #include <vector>
 #include <map>
+#include <iostream>
+
+#include "lib/Helper.hpp"
 
 class SmallVirtualMachine
 {
@@ -14,12 +17,18 @@ class SmallVirtualMachine
 
 	/**
 	 * Loads a program into memory
-	 * @param[out] base starting address of program loaded
+	 * @param[in] base starting address of program loaded
 	 * @param[out] end ending address of program loaded
 	 * @param[in] program program to load
 	 * @return error code
 	 */
-	int Load(int &base, std::vector<int> program);
+	int Load(unsigned int base, unsigned int &offset, std::vector<unsigned int> program);
+
+	enum LoadErrorCode {
+		NONE = 0,
+		INVALIDBASE,
+		OUTOFRANGE
+	};
 
 	/**
 	 * Run the program until a blocking operation 
@@ -47,7 +56,7 @@ class SmallVirtualMachine
 		sr_field sr;
 	};
 
-	struct insr_format_1
+	struct instr_format_1
 	{
 		unsigned int    : 6;
 		unsigned int RS : 2;
@@ -84,7 +93,9 @@ class SmallVirtualMachine
 	};
 
  private:
-	typedef int(*FP) (VirtualMachine *vm, instruction INSTR);
+	void init(unsigned int mem_size, unsigned int clock_speed);
+	
+	typedef int(*FP) (SmallVirtualMachine *vm, instruction INSTR);
 	
 	struct int_halves
 	 {
@@ -101,44 +112,44 @@ class SmallVirtualMachine
 	 unsigned int clock_speed;
 	 static const unsigned int REG_FILE_SIZE = 4;
 
-	 static int load(VirtualMachine *vm, instruction INSTR);
-	 static int loadi(VirtualMachine *vm, instruction INSTR);
-	 static int store(VirtualMachine *vm, instruction INSTR);
-	 static int add(VirtualMachine *vm, instruction INSTR);
-	 static int addi(VirtualMachine *vm, instruction INSTR);
-	 static int addc(VirtualMachine *vm, instruction INSTR);
-	 static int addci(VirtualMachine *vm, instruction INSTR);
-	 static int sub(VirtualMachine *vm, instruction INSTR);
-	 static int subi(VirtualMachine *vm, instruction INSTR);
-	 static int subc(VirtualMachine *vm, instruction INSTR);
-	 static int subci(VirtualMachine *vm, instruction INSTR);
-	 static int AND(VirtualMachine *vm, instruction INSTR);
-	 static int ANDI(VirtualMachine *vm, instruction INSTR);
-	 static int XOR(VirtualMachine *vm, instruction INSTR);
-	 static int XORI(VirtualMachine *vm, instruction INSTR);
-	 static int COMPL(VirtualMachine *vm, instruction INSTR);
-	 static int shl(VirtualMachine *vm, instruction INSTR);
-	 static int shla(VirtualMachine *vm, instruction INSTR);
-	 static int shr(VirtualMachine *vm, instruction INSTR);
-	 static int shra(VirtualMachine *vm, instruction INSTR);
-	 static int compr(VirtualMachine *vm, instruction INSTR);
-	 static int compri(VirtualMachine *vm, instruction INSTR);
-	 static int getstat(VirtualMachine *vm, instruction INSTR);
-	 static int putstat(VirtualMachine *vm, instruction INSTR);
-	 static int jump(VirtualMachine *vm, instruction INSTR);
-	 static int jumpl(VirtualMachine *vm, instruction INSTR);
-	 static int jumpg(VirtualMachine *vm, instruction INSTR);
-	 static int jumpe(VirtualMachine *vm, instruction INSTR);
-	 static int call(VirtualMachine *vm, instruction INSTR);
-	 static int RETURN(VirtualMachine *vm, instruction INSTR);
-	 static int read(VirtualMachine *vm, instruction INSTR);
-	 static int write(VirtualMachine *vm, instruction INSTR);
-	 static int halt(VirtualMachine *vm, instruction INSTR);
-	 static int noop(VirtualMachine *vm, instruction INSTR);
-	 static int trap(VirtualMachine *vm, instruction INSTR);
+	 static int load(SmallVirtualMachine *vm, instruction INSTR);
+	 static int loadi(SmallVirtualMachine *vm, instruction INSTR);
+	 static int store(SmallVirtualMachine *vm, instruction INSTR);
+	 static int add(SmallVirtualMachine *vm, instruction INSTR);
+	 static int addi(SmallVirtualMachine *vm, instruction INSTR);
+	 static int addc(SmallVirtualMachine *vm, instruction INSTR);
+	 static int addci(SmallVirtualMachine *vm, instruction INSTR);
+	 static int sub(SmallVirtualMachine *vm, instruction INSTR);
+	 static int subi(SmallVirtualMachine *vm, instruction INSTR);
+	 static int subc(SmallVirtualMachine *vm, instruction INSTR);
+	 static int subci(SmallVirtualMachine *vm, instruction INSTR);
+	 static int AND(SmallVirtualMachine *vm, instruction INSTR);
+	 static int ANDI(SmallVirtualMachine *vm, instruction INSTR);
+	 static int XOR(SmallVirtualMachine *vm, instruction INSTR);
+	 static int XORI(SmallVirtualMachine *vm, instruction INSTR);
+	 static int COMPL(SmallVirtualMachine *vm, instruction INSTR);
+	 static int shl(SmallVirtualMachine *vm, instruction INSTR);
+	 static int shla(SmallVirtualMachine *vm, instruction INSTR);
+	 static int shr(SmallVirtualMachine *vm, instruction INSTR);
+	 static int shra(SmallVirtualMachine *vm, instruction INSTR);
+	 static int compr(SmallVirtualMachine *vm, instruction INSTR);
+	 static int compri(SmallVirtualMachine *vm, instruction INSTR);
+	 static int getstat(SmallVirtualMachine *vm, instruction INSTR);
+	 static int putstat(SmallVirtualMachine *vm, instruction INSTR);
+	 static int jump(SmallVirtualMachine *vm, instruction INSTR);
+	 static int jumpl(SmallVirtualMachine *vm, instruction INSTR);
+	 static int jumpg(SmallVirtualMachine *vm, instruction INSTR);
+	 static int jumpe(SmallVirtualMachine *vm, instruction INSTR);
+	 static int call(SmallVirtualMachine *vm, instruction INSTR);
+	 static int RETURN(SmallVirtualMachine *vm, instruction INSTR);
+	 static int read(SmallVirtualMachine *vm, instruction INSTR);
+	 static int write(SmallVirtualMachine *vm, instruction INSTR);
+	 static int halt(SmallVirtualMachine *vm, instruction INSTR);
+	 static int noop(SmallVirtualMachine *vm, instruction INSTR);
+	 static int trap(SmallVirtualMachine *vm, instruction INSTR);
 
 	 int r[REG_FILE_SIZE];		//general purpose registers
-	 std::vector<int> mem;		//Memory
+	 std::vector<unsigned int> mem;		//Memory
 	 int pc;					//program counter
 	 instruction ir;			//instruction register
 	 status_register sr;		//status register

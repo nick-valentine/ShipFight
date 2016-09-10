@@ -1,6 +1,8 @@
 #ifndef HELPER_HPP
 #define HELPER_HPP
 
+#include <iostream>
+
 typedef unsigned int uint; 
 
 struct uint16 {
@@ -15,5 +17,7 @@ struct uint16 {
 };
 
 int int16mask(int x);
+
+void print_binary(int x);
 
 #endif //HELPER_HPP
