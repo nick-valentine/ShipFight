@@ -1,8 +1,8 @@
 #ifndef SMALLCOMPUTER_HPP
 #define SMALLCOMPUTER_HPP
 
-#include "VirtualMachine/SmallVirtualMachine.hpp"
-#include "Assembler/SmallAssembler.hpp"
+#include "Computer/VirtualMachine/SmallVirtualMachine.hpp"
+#include "Computer/Assembler/SmallAssembler.hpp"
 #include "Computer/ScreenIO/AbstractIO.hpp"
 #include "Computer/ScreenIO/LinuxIO.hpp"
 #include "Computer/FileSystem/VDisk.hpp"

@@ -1,4 +1,4 @@
-#include "VirtualMachine/SmallVirtualMachine.hpp"
+#include "Computer/VirtualMachine/SmallVirtualMachine.hpp"
 
 SmallVirtualMachine::SmallVirtualMachine()
 {

@@ -8,7 +8,7 @@
 
 #include "Parameters.hpp"
 #include "lib/Helper.hpp"
-#include "Assembler/AbstractAssembler.hpp"
+#include "Computer/Assembler/AbstractAssembler.hpp"
 
 class SmallAssembler : public AbstractAssembler
 {

@@ -1,4 +1,4 @@
-#include "Assembler/SmallAssembler.hpp"
+#include "Computer/Assembler/SmallAssembler.hpp"
 
 SmallAssembler::SmallAssembler() : AbstractAssembler()
 {
