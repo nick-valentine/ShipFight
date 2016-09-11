@@ -2,19 +2,21 @@
 
 SmallVirtualMachine::SmallVirtualMachine()
 {
-	this->init(256, 10000);
+	this->init(256, 10000,0);
 }
 
-SmallVirtualMachine::SmallVirtualMachine(unsigned int mem_size, unsigned int clock_speed)
+SmallVirtualMachine::SmallVirtualMachine(unsigned int mem_size, unsigned int clock_speed, AbstractIO *io)
 {
-	this->init(mem_size, clock_speed);
+	this->init(mem_size, clock_speed, io);
 }
 
-void SmallVirtualMachine::init(unsigned int mem_size, unsigned int clock_speed)
+void SmallVirtualMachine::init(unsigned int mem_size, unsigned int clock_speed, AbstractIO *io)
 {
 	this->mem_size = mem_size;
 	this->clock_speed = clock_speed;
 	this->mem = std::vector<unsigned int>(mem_size,0);
+
+	this->io = io;
 
 	//init pcb
 	for(unsigned int i = 0; i < REG_FILE_SIZE; ++i) {
@@ -440,28 +442,39 @@ int SmallVirtualMachine::RETURN(SmallVirtualMachine *vm, instruction INSTR)
 
 int SmallVirtualMachine::read(SmallVirtualMachine *vm, instruction INSTR)
 {
-	//@todo: implement read/write interfaces
-	instr_format_1 f = INSTR.f1;
-	int x;
-	std::cin>>x;
-	int16 readValue;
-	readValue.i = x;
-	vm->r[f.RD] = readValue.i16.low;
+	std::cout<<"Reading";
+	if( vm->io != 0 ) {
+		instr_format_1 f = INSTR.f1;
+		char x;
+		x = vm->io->getch();
+		//std::cin>>x;
+		int16 readValue;
+		readValue.i = x;
+		vm->r[f.RD] = readValue.i16.low;
 
-	vm->clock += 28;
-	return 1;
+		vm->clock += 28;
+		return 1;
+	} else {
+		//error: no io interface present
+		return 0;
+	}
 }
 
 int SmallVirtualMachine::write(SmallVirtualMachine *vm, instruction INSTR)
 {
-	//@todo: implement read/write interface
-	instr_format_1 f = INSTR.f1;
-	int16 writeValue;
-	writeValue.i = vm->r[f.RD];
-	std::cout<<writeValue.i16.low;
+	if( vm->io != 0 ) {
+		instr_format_1 f = INSTR.f1;
+		int16 writeValue;
+		writeValue.i = vm->r[f.RD];
+		//std::cout<<writeValue.i16.low;
+		vm->io->putch((char)writeValue.i16.low);
 
-	vm->clock += 28;
-	return 1;
+		vm->clock += 28;
+		return 1;
+	} else {
+		//error: no io interface present
+		return 0;
+	}
 }
 
 int SmallVirtualMachine::halt(SmallVirtualMachine *vm, instruction INSTR)

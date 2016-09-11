@@ -5,6 +5,7 @@
 #include <map>
 #include <iostream>
 
+#include "Computer/ScreenIO/AbstractIO.hpp"
 #include "lib/Helper.hpp"
 
 class SmallVirtualMachine
@@ -12,7 +13,7 @@ class SmallVirtualMachine
  public:
 	 //@todo: add Computer class to allow for reading and writing interface
 	SmallVirtualMachine();
-	SmallVirtualMachine(unsigned int mem_size, unsigned int clock_speed);
+	SmallVirtualMachine(unsigned int mem_size, unsigned int clock_speed, AbstractIO *io);
 
 
 	/**
@@ -93,7 +94,7 @@ class SmallVirtualMachine
 	};
 
  private:
-	void init(unsigned int mem_size, unsigned int clock_speed);
+	void init(unsigned int mem_size, unsigned int clock_speed, AbstractIO *io);
 	
 	typedef int(*FP) (SmallVirtualMachine *vm, instruction INSTR);
 	
@@ -157,6 +158,8 @@ class SmallVirtualMachine
 	 int clock;					//clock
 	 int base;					//base of current program
 	 int limit;					//limit of current program
+
+	 AbstractIO *io;
 
 	 //map of opcodes to function pointers,
 	 //concatenating OP and I such that

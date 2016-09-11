@@ -1,5 +1,13 @@
 CC=g++
 CFLAGS=-c -Wall -I./inc
+OFILES=obj/main.o \
+	   obj/Helper.o \
+	   obj/StrFunc.o \
+	   obj/AbstractAssembler.o \
+	   obj/SmallAssembler.o \
+	   obj/SmallVirtualMachine.o \
+	   obj/SmallComputer.o \
+	   obj/LinuxIO.o
 
 all: main
 
@@ -8,10 +16,22 @@ clean:
 
 rebuild: clean all
 
-main: obj/main.o obj/Helper.o obj/StrFunc.o obj/AbstractAssembler.o obj/SmallAssembler.o obj/SmallVirtualMachine.o
-	$(CC) obj/main.o obj/Helper.o obj/StrFunc.o obj/AbstractAssembler.o obj/SmallAssembler.o obj/SmallVirtualMachine.o -o main
+main: $(OFILES) 
+	$(CC) $(OFILES) -o main
 
-obj/main.o: inc/lib/Helper.hpp inc/lib/StrFunc.hpp inc/lib/VecFunc.hpp inc/Assembler/AbstractAssembler.hpp inc/Assembler/SmallAssembler.hpp inc/VirtualMachine/SmallVirtualMachine.hpp src/lib/Helper.cpp src/lib/StrFunc.cpp src/Assembler/AbstractAssembler.cpp src/Assembler/SmallAssembler.cpp src/VirtualMachine/SmallVirtualMachine.cpp
+obj/main.o: inc/lib/Helper.hpp \
+			inc/lib/StrFunc.hpp \
+			inc/lib/VecFunc.hpp \
+			inc/Assembler/AbstractAssembler.hpp \
+			inc/Assembler/SmallAssembler.hpp \
+			inc/VirtualMachine/SmallVirtualMachine.hpp \
+			inc/Computer/SmallComputer.hpp \
+			src/lib/Helper.cpp \
+			src/lib/StrFunc.cpp \
+			src/Assembler/AbstractAssembler.cpp \
+			src/Assembler/SmallAssembler.cpp \
+			src/VirtualMachine/SmallVirtualMachine.cpp \
+			src/Computer/SmallComputer.cpp
 	$(CC) $(CFLAGS) src/main.cpp -o obj/main.o
 
 obj/Helper.o: inc/lib/Helper.hpp src/lib/Helper.cpp
@@ -28,3 +48,14 @@ obj/SmallAssembler.o: inc/Assembler/SmallAssembler.hpp src/Assembler/SmallAssemb
 
 obj/SmallVirtualMachine.o: inc/VirtualMachine/SmallVirtualMachine.hpp src/VirtualMachine/SmallVirtualMachine.cpp
 	$(CC) $(CFLAGS) src/VirtualMachine/SmallVirtualMachine.cpp -o obj/SmallVirtualMachine.o
+
+obj/SmallComputer.o: inc/Computer/ScreenIO/AbstractIO.hpp \
+					 obj/LinuxIO.o \
+					 inc/Computer/SmallComputer.hpp \
+					 src/Computer/SmallComputer.cpp
+	$(CC) $(CFLAGS) src/Computer/SmallComputer.cpp -o obj/SmallComputer.o
+
+obj/LinuxIO.o: inc/Computer/ScreenIO/AbstractIO.hpp \
+			   inc/Computer/ScreenIO/LinuxIO.hpp \
+			   src/Computer/ScreenIO/LinuxIO.cpp
+	$(CC) $(CFLAGS) src/Computer/ScreenIO/LinuxIO.cpp -o obj/LinuxIO.o
