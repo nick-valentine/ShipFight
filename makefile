@@ -7,7 +7,8 @@ OFILES=obj/main.o \
 	   obj/SmallAssembler.o \
 	   obj/SmallVirtualMachine.o \
 	   obj/SmallComputer.o \
-	   obj/LinuxIO.o
+	   obj/LinuxIO.o \
+	   obj/VDisk.o
 
 all: main
 
@@ -52,10 +53,17 @@ obj/SmallVirtualMachine.o: inc/VirtualMachine/SmallVirtualMachine.hpp src/Virtua
 obj/SmallComputer.o: inc/Computer/ScreenIO/AbstractIO.hpp \
 					 obj/LinuxIO.o \
 					 inc/Computer/SmallComputer.hpp \
-					 src/Computer/SmallComputer.cpp
+					 src/Computer/SmallComputer.cpp \
+					 obj/VDisk.o 
 	$(CC) $(CFLAGS) src/Computer/SmallComputer.cpp -o obj/SmallComputer.o
 
 obj/LinuxIO.o: inc/Computer/ScreenIO/AbstractIO.hpp \
 			   inc/Computer/ScreenIO/LinuxIO.hpp \
 			   src/Computer/ScreenIO/LinuxIO.cpp
 	$(CC) $(CFLAGS) src/Computer/ScreenIO/LinuxIO.cpp -o obj/LinuxIO.o
+
+obj/VDisk.o: inc/Computer/FileSystem/VDisk.hpp \
+			 src/Computer/FileSystem/VDisk.cpp
+	$(CC) $(CFLAGS) src/Computer/FileSystem/VDisk.cpp -o obj/VDisk.o
+
+

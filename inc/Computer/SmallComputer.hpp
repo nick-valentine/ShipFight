@@ -5,6 +5,7 @@
 #include "Assembler/SmallAssembler.hpp"
 #include "Computer/ScreenIO/AbstractIO.hpp"
 #include "Computer/ScreenIO/LinuxIO.hpp"
+#include "Computer/FileSystem/VDisk.hpp"
 
 //@todo: Operating System, File system
 //@notes: io system must be injected and managed/deleted by caller
@@ -25,6 +26,7 @@ private:
 	SmallVirtualMachine vm;
 	SmallAssembler assembler;
 	AbstractIO *io;
+	VDisk disk;
 };
 
 #endif //SMALLCOMPUTER_HPP

@@ -16,6 +16,10 @@ SmallComputer::SmallComputer(unsigned int mem_size, unsigned int clock_speed, Ab
 
 void SmallComputer::Run()
 {
+	std::string block(128,'1');
+	std::cout<<block<<"\n";
+	this->disk.putBlock(1,block);
+
 	this->io->putstr("Hello World!\n");
 	
 	std::vector<std::string> p;
@@ -41,6 +45,8 @@ void SmallComputer::init(unsigned int mem_size, unsigned int clock_speed, Abstra
 	this->vm = SmallVirtualMachine(mem_size, clock_speed,io);
 
 	this->io = io;
+
+	this->disk = VDisk("gameData/disks/smallComputerDisk",128,128);
 }
 
 
