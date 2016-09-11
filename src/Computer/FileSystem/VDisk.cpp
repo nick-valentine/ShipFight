@@ -106,3 +106,18 @@ int VDisk::putBlock(unsigned int blockNumber, std::string buffer)
 	return 0;
 }
 
+
+std::string VDisk::getDiskName()
+{
+	return this->diskName;
+}
+
+int VDisk::getNumBlocks()
+{
+	return this->numBlocks;
+}
+
+int VDisk::getBlockSize()
+{
+	return this->blockSize;
+}

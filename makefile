@@ -8,7 +8,8 @@ OFILES=obj/main.o \
 	   obj/SmallVirtualMachine.o \
 	   obj/SmallComputer.o \
 	   obj/LinuxIO.o \
-	   obj/VDisk.o
+	   obj/VDisk.o \
+	   obj/Fat32.o
 
 all: main
 
@@ -20,19 +21,8 @@ rebuild: clean all
 main: $(OFILES) 
 	$(CC) $(OFILES) -o main
 
-obj/main.o: inc/lib/Helper.hpp \
-			inc/lib/StrFunc.hpp \
-			inc/lib/VecFunc.hpp \
-			inc/Computer/Assembler/AbstractAssembler.hpp \
-			inc/Computer/Assembler/SmallAssembler.hpp \
-			inc/Computer/VirtualMachine/SmallVirtualMachine.hpp \
-			inc/Computer/SmallComputer.hpp \
-			src/lib/Helper.cpp \
-			src/lib/StrFunc.cpp \
-			src/Computer/Assembler/AbstractAssembler.cpp \
-			src/Computer/Assembler/SmallAssembler.cpp \
-			src/Computer/VirtualMachine/SmallVirtualMachine.cpp \
-			src/Computer/SmallComputer.cpp
+obj/main.o: inc/Computer/ScreenIO/LinuxIO.hpp \
+			inc/Computer/SmallComputer.hpp 
 	$(CC) $(CFLAGS) src/main.cpp -o obj/main.o
 
 obj/Helper.o: inc/lib/Helper.hpp src/lib/Helper.cpp
@@ -59,7 +49,8 @@ obj/SmallComputer.o: inc/Computer/ScreenIO/AbstractIO.hpp \
 					 obj/VDisk.o \
 					 obj/AbstractAssembler.o \
 					 obj/SmallAssembler.o \
-					 obj/SmallVirtualMachine.o
+					 obj/SmallVirtualMachine.o \
+					 obj/Fat32.o
 	$(CC) $(CFLAGS) src/Computer/SmallComputer.cpp -o obj/SmallComputer.o
 
 obj/LinuxIO.o: inc/Computer/ScreenIO/AbstractIO.hpp \
@@ -70,5 +61,9 @@ obj/LinuxIO.o: inc/Computer/ScreenIO/AbstractIO.hpp \
 obj/VDisk.o: inc/Computer/FileSystem/VDisk.hpp \
 			 src/Computer/FileSystem/VDisk.cpp
 	$(CC) $(CFLAGS) src/Computer/FileSystem/VDisk.cpp -o obj/VDisk.o
+
+obj/Fat32.o: inc/Computer/FileSystem/Fat32.hpp \
+			 src/Computer/FileSystem/Fat32.cpp
+	$(CC) $(CFLAGS) src/Computer/FileSystem/Fat32.cpp -o obj/Fat32.o
 
 

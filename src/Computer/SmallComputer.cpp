@@ -20,6 +20,8 @@ void SmallComputer::Run()
 	std::cout<<block<<"\n";
 	this->disk.putBlock(1,block);
 
+	this->fsys = Fat32(this->disk);
+
 	this->io->putstr("Hello World!\n");
 	
 	std::vector<std::string> p;

@@ -13,6 +13,9 @@ namespace string
   std::vector<std::string> explode(std::string str, std::string delims, bool ignore_quotes = true);
 
   std::string no_whitespace(std::string str);
+
+  //block a string into a list of blocks of size b
+  std::vector<std::string> block(std::string buffer, int b);
 }
 
 #endif //STRFUNC_HPP

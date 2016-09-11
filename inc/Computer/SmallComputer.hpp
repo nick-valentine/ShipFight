@@ -6,6 +6,7 @@
 #include "Computer/ScreenIO/AbstractIO.hpp"
 #include "Computer/ScreenIO/LinuxIO.hpp"
 #include "Computer/FileSystem/VDisk.hpp"
+#include "Computer/FileSystem/Fat32.hpp"
 
 //@todo: Operating System, File system
 //@notes: io system must be injected and managed/deleted by caller
@@ -27,6 +28,7 @@ private:
 	SmallAssembler assembler;
 	AbstractIO *io;
 	VDisk disk;
+	Fat32 fsys;
 };
 
 #endif //SMALLCOMPUTER_HPP
