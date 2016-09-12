@@ -21,7 +21,8 @@ void LinuxIO::putch(char x)
 char LinuxIO::getch()
 {
 	char x;
-	std::cin>>x;
+	//std::cin>>x;
+	std::cin.get(x);
 	return x;
 }
 
@@ -59,13 +60,25 @@ void LinuxIO::clear()
 	this->updateScreen();
 }
 
+std::string LinuxIO::getstr()
+{
+	std::string x;
+	std::cin>>x;
+	return x;
+}
+
 void LinuxIO::putstr(std::string str)
 {
 	std::vector<std::string> fstr = string::explode(str,'\n');
 	for(int j = 0; j < fstr.size(); ++j) {
-		cursorTestWrap(fstr[j].size());
+		this->cursorTestWrap(fstr[j].size());
 		for(int i = 0; i < fstr[j].size(); ++i) {
-			virtualScreen[cursor_y][cursor_x++] = fstr[j][i];	
+			virtualScreen[cursor_y][cursor_x++] = fstr[j][i];
+			if(cursor_x >= screen_width) {
+				cursor_x = 0;
+				cursor_y++;
+				this->cursorTestWrap(0);
+			}
 		}
 		if( j != fstr.size() - 1 ) {
 			cursor_x = 0;

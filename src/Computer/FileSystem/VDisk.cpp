@@ -53,7 +53,7 @@ void VDisk::init(std::string diskName, unsigned int numBlocks, unsigned int bloc
 int VDisk::getBlock(unsigned int blockNumber, std::string &buffer)
 {
 	if( !this->initialized ) {
-		return 1;
+		return 0;
 	}
 
 	buffer = "";
@@ -70,20 +70,20 @@ int VDisk::getBlock(unsigned int blockNumber, std::string &buffer)
 				inFile.get(x);
 			} else {
 				//some error happened while reading the file
-				return 1;
+				return 0;
 			}
 		}
 	} else {
 		//some error happened while opening the file
-		return 1;
+		return 0;
 	}
-	return 0;
+	return 1;
 }
 
 int VDisk::putBlock(unsigned int blockNumber, std::string buffer)
 {
 	if( !this->initialized ) {
-		return 1;
+		return 0;
 	}
 
 	std::fstream outFile;
@@ -96,14 +96,14 @@ int VDisk::putBlock(unsigned int blockNumber, std::string buffer)
 				outFile.put(buffer[i]);
 			} else {
 				//some error happened while writing the file
-				return 1;
+				return 0;
 			}
 		}
 	} else {
 		//some error happened while opening the file
-		return 1;
+		return 0;
 	}
-	return 0;
+	return 1;
 }
 
 

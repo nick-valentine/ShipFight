@@ -7,6 +7,7 @@
 #include "Computer/ScreenIO/LinuxIO.hpp"
 #include "Computer/FileSystem/VDisk.hpp"
 #include "Computer/FileSystem/Fat32.hpp"
+#include "Computer/Shell/SmallShell.hpp"
 
 //@todo: Operating System, File system
 //@notes: io system must be injected and managed/deleted by caller
@@ -29,6 +30,7 @@ private:
 	AbstractIO *io;
 	VDisk disk;
 	Fat32 fsys;
+	SmallShell shell;
 };
 
 #endif //SMALLCOMPUTER_HPP

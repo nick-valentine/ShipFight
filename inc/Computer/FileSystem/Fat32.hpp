@@ -5,10 +5,11 @@
 #include <vector>
 #include <string>
 
+#include "Computer/FileSystem/AbstractFileSystem.hpp"
 #include "lib/StrFunc.hpp"
 #include "Computer/FileSystem/VDisk.hpp"
 
-class Fat32
+class Fat32 : public AbstractFileSystem
 {
 public:
 	Fat32();
@@ -26,6 +27,9 @@ public:
 	int nextBlock(std::string file, int blockNumber);
 
 	std::vector<std::string> getRoot();
+
+	int getBlockSize();
+	int getNumBlocks();
 
 private:
 	const static int filenameLength = 5;

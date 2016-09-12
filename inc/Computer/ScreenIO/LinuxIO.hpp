@@ -24,6 +24,7 @@ public:
 
 	void clear();
 	void putstr(std::string str);
+	std::string getstr();
 
 private:
 	static const char EMPTY_CHAR = ' ';

@@ -16,14 +16,10 @@ SmallComputer::SmallComputer(unsigned int mem_size, unsigned int clock_speed, Ab
 
 void SmallComputer::Run()
 {
-	std::string block(128,'1');
-	std::cout<<block<<"\n";
-	this->disk.putBlock(1,block);
-
-	this->fsys = Fat32(this->disk);
-
 	this->io->putstr("Hello World!\n");
-	
+
+	this->shell.Run();
+
 	std::vector<std::string> p;
 	p.push_back("loadi 1 60");
 	p.push_back("addi 1 5");
@@ -49,6 +45,9 @@ void SmallComputer::init(unsigned int mem_size, unsigned int clock_speed, Abstra
 	this->io = io;
 
 	this->disk = VDisk("gameData/disks/smallComputerDisk",128,128);
+	this->fsys = Fat32(this->disk);
+
+	this->shell = SmallShell(this->io, &this->fsys);
 }
 
 

@@ -18,6 +18,7 @@ public:
 
 	//for use by operating system
 	virtual void clear() = 0;
+	virtual std::string getstr() = 0;
 	virtual void putstr(std::string str) = 0;
 
 private:

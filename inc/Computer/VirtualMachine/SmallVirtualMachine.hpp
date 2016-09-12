@@ -5,13 +5,13 @@
 #include <map>
 #include <iostream>
 
+#include "Computer/VirtualMachine/AbstractVirtualMachine.hpp"
 #include "Computer/ScreenIO/AbstractIO.hpp"
 #include "lib/Helper.hpp"
 
-class SmallVirtualMachine
+class SmallVirtualMachine : public AbstractVirtualMachine
 {
  public:
-	 //@todo: add Computer class to allow for reading and writing interface
 	SmallVirtualMachine();
 	SmallVirtualMachine(unsigned int mem_size, unsigned int clock_speed, AbstractIO *io);
 

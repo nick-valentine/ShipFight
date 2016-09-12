@@ -9,7 +9,8 @@ OFILES=obj/main.o \
 	   obj/SmallComputer.o \
 	   obj/LinuxIO.o \
 	   obj/VDisk.o \
-	   obj/Fat32.o
+	   obj/Fat32.o \
+	   obj/SmallShell.o
 
 all: main
 
@@ -39,7 +40,9 @@ obj/SmallAssembler.o: inc/Computer/Assembler/AbstractAssembler.hpp \
 					  src/Computer/Assembler/SmallAssembler.cpp
 	$(CC) $(CFLAGS) src/Computer/Assembler/SmallAssembler.cpp -o obj/SmallAssembler.o
 
-obj/SmallVirtualMachine.o: inc/Computer/VirtualMachine/SmallVirtualMachine.hpp src/Computer/VirtualMachine/SmallVirtualMachine.cpp
+obj/SmallVirtualMachine.o: inc/Computer/VirtualMachine/AbstractVirtualMachine.hpp \
+						   inc/Computer/VirtualMachine/SmallVirtualMachine.hpp \
+						   src/Computer/VirtualMachine/SmallVirtualMachine.cpp
 	$(CC) $(CFLAGS) src/Computer/VirtualMachine/SmallVirtualMachine.cpp -o obj/SmallVirtualMachine.o
 
 obj/SmallComputer.o: inc/Computer/ScreenIO/AbstractIO.hpp \
@@ -50,7 +53,8 @@ obj/SmallComputer.o: inc/Computer/ScreenIO/AbstractIO.hpp \
 					 obj/AbstractAssembler.o \
 					 obj/SmallAssembler.o \
 					 obj/SmallVirtualMachine.o \
-					 obj/Fat32.o
+					 obj/Fat32.o \
+					 obj/SmallShell.o
 	$(CC) $(CFLAGS) src/Computer/SmallComputer.cpp -o obj/SmallComputer.o
 
 obj/LinuxIO.o: inc/Computer/ScreenIO/AbstractIO.hpp \
@@ -62,8 +66,11 @@ obj/VDisk.o: inc/Computer/FileSystem/VDisk.hpp \
 			 src/Computer/FileSystem/VDisk.cpp
 	$(CC) $(CFLAGS) src/Computer/FileSystem/VDisk.cpp -o obj/VDisk.o
 
-obj/Fat32.o: inc/Computer/FileSystem/Fat32.hpp \
+obj/Fat32.o: inc/Computer/FileSystem/AbstractFileSystem.hpp \
+			 inc/Computer/FileSystem/Fat32.hpp \
 			 src/Computer/FileSystem/Fat32.cpp
 	$(CC) $(CFLAGS) src/Computer/FileSystem/Fat32.cpp -o obj/Fat32.o
 
-
+obj/SmallShell.o: inc/Computer/Shell/SmallShell.hpp \
+			      src/Computer/Shell/SmallShell.cpp
+	$(CC) $(CFLAGS) src/Computer/Shell/SmallShell.cpp -o obj/SmallShell.o

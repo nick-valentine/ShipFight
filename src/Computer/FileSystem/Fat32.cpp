@@ -51,8 +51,6 @@ Fat32::Fat32(VDisk disk)
 			this->fat.push_back(i+1);
 		}
 		this->fat.push_back(0);
-
-		this->fssynch();
 	} else {
 		std::istringstream instream;
 		instream.str(rootBuffer);
@@ -80,6 +78,8 @@ Fat32::Fat32(VDisk disk)
 			this->fat.push_back(block);
 		}
 	}
+
+	this->fssynch();
 	this->initialized = true;
 }
 
@@ -322,4 +322,15 @@ std::string Fat32::constructDefaultFilename()
 		defaultFilename.push_back('X');
 	}
 	return defaultFilename;
+}
+
+
+int Fat32::getBlockSize()
+{
+	return this->disk.getBlockSize();
+}
+
+int Fat32::getNumBlocks()
+{
+	return this->disk.getNumBlocks();
 }
